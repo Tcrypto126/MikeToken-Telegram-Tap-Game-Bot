@@ -35,7 +35,7 @@ let USER_NAME: string = "Leo_mint";
 let chatId: number = 0;
 
 
-// console.log("--//---secretkey----//---", secretkey);
+console.log("--//---secretkey----//---", secretkey);
 const balance1: number = 200;
 
 //Function to encrypt data

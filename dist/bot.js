@@ -28,8 +28,7 @@ let twitterID = 0;
 let USER_ID = 0;
 let USER_NAME = "Leo_mint";
 let chatId = 0;
-console.log("--//---secretkey----//---", secretkey);
-// const secretkey = '05a06c693e1f334ccb3ec369d3f186e5c00e84884f72de85546d349325e39ca8';
+// console.log("--//---secretkey----//---", secretkey);
 const balance1 = 200;
 //Function to encrypt data
 /**
@@ -82,7 +81,6 @@ const options = {
         ],
     },
 };
-
 const option1 = {
     parse_mode: "HTML",
     disable_web_page_preview: true,
