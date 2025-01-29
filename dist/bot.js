@@ -82,6 +82,7 @@ const options = {
         ],
     },
 };
+
 const option1 = {
     parse_mode: "HTML",
     disable_web_page_preview: true,
