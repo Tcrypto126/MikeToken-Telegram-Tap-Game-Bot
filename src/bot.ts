@@ -24,6 +24,7 @@ const bot = new TelegramBot(token, { polling: true });
 const groupUsername = process.env.GROUP_USERNAME;
 const channelUsername = process.env.CHANNEL_USERNAME;
 const twitter = process.env.TWITTER_ID;
+const secretkey : string | undefined = process.env.Secretkey;
 
 let groupId: number = 0;
 let channelID: number = 0;
@@ -33,8 +34,8 @@ let USER_ID: number = 0;
 let USER_NAME: string = "Leo_mint";
 let chatId: number = 0;
 
-const secretkey = '';
 
+// console.log("--//---secretkey----//---", secretkey);
 const balance1: number = 200;
 
 //Function to encrypt data
@@ -48,7 +49,7 @@ export const encrypt = (text: string, key: string) => {
   return crypto.AES.encrypt(text, key).toString();
 }
 
-const encryptedbalance1 = encrypt(balance1.toString(), secretkey);
+const encryptedbalance1 = encrypt(balance1.toString(), secretkey as string);
 bot
   .getChat(groupUsername)
   .then((chat: any) => {
@@ -76,7 +77,7 @@ const options = {
       [
         {
           text: "Play in 1 click  🐉",
-          web_app: { url: "https://miketoken.me/" },
+          web_app: { url: "https://monster-tap-to-earn-game-frontend-v2.vercel.app/" },
         },
       ],
       [
@@ -128,7 +129,7 @@ const options3 = {
       [
         {
           text: "Play in 1 click  🐉",
-          web_app: { url: "https://miketoken.me/" },
+          web_app: { url: "https://monster-tap-to-earn-game-frontend-v2.vercel.app/" },
         },
       ],
       [
@@ -175,7 +176,7 @@ bot.on("message", async (msg: any) => {
 
     try {
       await axios.post(
-        `https://backend.miketoken.me/api/vibe/add`,
+        `https://monster-tap-to-earn-game-backend-v2-2.onrender.com/api/vibe/add`,
         {
           username: msg.from.username,
         }
@@ -222,7 +223,7 @@ bot.onText(/\/start (.+)/, async (msg: any, match: any) => {
 
   try {
     await axios.post(
-      `https://backend.miketoken.me/api/friend/add`,
+      `https://monster-tap-to-earn-game-backend-v2-2.onrender.com/api/friend/add`,
       {
         username: referrerUsername,
         friend: USER_NAME,
@@ -230,27 +231,27 @@ bot.onText(/\/start (.+)/, async (msg: any, match: any) => {
     );
 
     await axios.post(
-      `https://backend.miketoken.me/api/wallet/add`,
+      `https://monster-tap-to-earn-game-backend-v2-2.onrender.com/api/wallet/add`,
       {
         username: USER_NAME,
       }
     );
 
     await axios.post(
-      `https://backend.miketoken.me/api/wallet/updateBalance/${USER_NAME}`,
+      `https://monster-tap-to-earn-game-backend-v2-2.onrender.com/api/wallet/updateBalance/${USER_NAME}`,
       { balance: encryptedbalance1 }
     );
 
     const response1 = await axios.post(
-      `https://backend.miketoken.me/api/wallet/${referrerUsername}`
+      `https://monster-tap-to-earn-game-backend-v2-2.onrender.com/api/wallet/${referrerUsername}`
     );
 
     if (response1 && typeof response1.data.balance === 'number') {
       const balance2 = response1.data.balance + 5000;
-      const encryptedbalance2 = encrypt(balance2.toString(), secretkey);
+      const encryptedbalance2 = encrypt(balance2.toString(), secretkey as string);
 
       const response2 = await axios.post(
-        `https://backend.miketoken.me/api/wallet/updateBalance/${referrerUsername}`,
+        `https://monster-tap-to-earn-game-backend-v2-2.onrender.com/api/wallet/updateBalance/${referrerUsername}`,
         {balance: encryptedbalance2}
       );
 
@@ -284,19 +285,19 @@ app.post("/joinTG", (req: any, res: any) => {
         console.log("💪 You will gain 1000 coins!");
         try {
           const response = await axios.post(
-            `https://backend.miketoken.me/api/earnings/add`,
+            `https://monster-tap-to-earn-game-backend-v2-2.onrender.com/api/earnings/add`,
             { username: username }
           );
           if (response.data.joinTelegram.earned) {
             axios.post(
-              `https://backend.miketoken.me/api/earnings/update/joinTelegram/${username}`,
+              `https://monster-tap-to-earn-game-backend-v2-2.onrender.com/api/earnings/update/joinTelegram/${username}`,
               { status: true, earned: true }
             );
             res.status(200).json({ message: "ok", username: username });
             console.log("---already you received bonus---", res.message);
           } else {
             axios.post(
-              `https://backend.miketoken.me/api/earnings/update/joinTelegram/${username}`,
+              `https://monster-tap-to-earn-game-backend-v2-2.onrender.com/api/earnings/update/joinTelegram/${username}`,
               { status: true, earned: false }
             );
             res.status(200).json({ message: "ok", username: username });
@@ -332,14 +333,14 @@ app.post("/joinTC", (req: any, res: any) => {
         try {
           const response = await axios
             .post(
-              `https://backend.miketoken.me/api/earnings/add`,
+              `https://monster-tap-to-earn-game-backend-v2-2.onrender.com/api/earnings/add`,
               {
                 username: username,
               }
             );
           if (response.data.subscribeTelegram.earned) {
             await axios.post(
-              `https://backend.miketoken.me/api/earnings/update/subscribeTelegram/${username}`,
+              `https://monster-tap-to-earn-game-backend-v2-2.onrender.com/api/earnings/update/subscribeTelegram/${username}`,
               {
                 status: true,
                 earned: true,
@@ -349,7 +350,7 @@ app.post("/joinTC", (req: any, res: any) => {
             console.log("---already you received bonus---", res.msg);
           } else {
             await axios.post(
-              `https://backend.miketoken.me/api/earnings/update/subscribeTelegram/${username}`,
+              `https://monster-tap-to-earn-game-backend-v2-2.onrender.com/api/earnings/update/subscribeTelegram/${username}`,
               {
                 status: true,
                 earned: false,
