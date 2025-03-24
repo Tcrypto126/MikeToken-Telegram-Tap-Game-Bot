@@ -1,7 +1,7 @@
 #                               Tap To Earn Game
 
-## Frontend: [https://github.com/Tcrypto126/Telegram-Tap-To-Earn-Game/](https://github.com/Tcrypto126/MikeToken-Telegram-Tap-Game-Frontend-V2)
-## Backend: [https://github.com/Tcrypto126/Telegram-Tap-To-Earn-Game-Backend/](https://github.com/Tcrypto126/MikeToken-Telegram-Tap-Game-Backend-V2)
+## Frontend: [https://github.com/Tcrypto126/MikeToken-Telegram-Tap-Game-Frontend-V2/](https://github.com/Tcrypto126/MikeToken-Telegram-Tap-Game-Frontend-V2)
+## Backend: [https://github.com/Tcrypto126/MikeToken-Telegram-Tap-Game-Backend-V2/](https://github.com/Tcrypto126/MikeToken-Telegram-Tap-Game-Backend-V2)
 
 ![MikeToken Telegram Game Bot](/assets/First%20page.png)
 
